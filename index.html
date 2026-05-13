@@ -1,0 +1,779 @@
+جميع الحقوق محفوظة © جمعية صناع الحياة الشرقية 2026
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Cairo',sans-serif;
+}
+
+body{
+background:#f5f7fb;
+direction:rtl;
+}
+
+.lm-wrapper{
+max-width:1200px;
+margin:auto;
+padding:25px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:24px;
+}
+
+.lm-card{
+background:#fff;
+border-radius:24px;
+padding:30px;
+box-shadow:0 10px 35px rgba(0,0,0,.07);
+}
+
+.lm-title{
+font-size:38px;
+font-weight:800;
+color:#0057A8;
+margin-bottom:25px;
+}
+
+.lm-product-card{
+background:#f8f9fc;
+border-radius:22px;
+padding:20px;
+margin-bottom:25px;
+}
+
+.lm-product-top{
+display:flex;
+gap:18px;
+align-items:center;
+}
+
+.lm-product-img{
+width:180px;
+height:180px;
+border-radius:18px;
+object-fit:cover;
+background:#eee;
+}
+
+.product-info{
+flex:1;
+}
+
+.donation-select{
+width:100%;
+height:56px;
+border-radius:14px;
+border:1px solid #ddd;
+padding:0 14px;
+font-size:16px;
+font-weight:700;
+margin-bottom:16px;
+background:#fff;
+outline:none;
+}
+
+.lm-product-name{
+font-size:28px;
+font-weight:800;
+color:#0057A8;
+margin-bottom:8px;
+line-height:1.5;
+}
+
+.lm-product-sub{
+color:#666;
+font-size:15px;
+}
+
+.lm-qty{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:18px;
+margin-top:22px;
+}
+
+.lm-qty-btn{
+width:44px;
+height:44px;
+border-radius:50%;
+border:none;
+background:#fff;
+font-size:24px;
+font-weight:800;
+cursor:pointer;
+box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.lm-price{
+font-size:34px;
+font-weight:800;
+}
+
+.progress-top{
+display:flex;
+justify-content:space-between;
+font-size:14px;
+font-weight:700;
+margin-bottom:10px;
+gap:10px;
+}
+
+.progress-bar{
+height:14px;
+background:#e8edf5;
+border-radius:50px;
+overflow:hidden;
+margin-bottom:25px;
+}
+
+.progress-fill{
+height:100%;
+width:57%;
+background:linear-gradient(90deg,#0057A8,#4fa3ff);
+transition:.4s;
+}
+
+.trust-box{
+display:grid;
+gap:10px;
+margin-bottom:25px;
+}
+
+.trust-item{
+background:#f8f9fc;
+padding:14px;
+border-radius:14px;
+font-weight:700;
+}
+
+.lm-input{
+width:100%;
+height:58px;
+border:1px solid #ddd;
+border-radius:14px;
+padding:0 18px;
+font-size:16px;
+margin-bottom:18px;
+}
+
+.lm-input.error{
+border-color:#e74c3c;
+}
+
+.required span{
+color:red;
+}
+
+.lm-section-title{
+font-size:26px;
+font-weight:800;
+margin-bottom:18px;
+}
+
+.lm-payments{
+display:flex;
+gap:15px;
+margin-bottom:25px;
+flex-wrap:wrap;
+}
+
+.lm-method{
+flex:1;
+min-width:150px;
+padding:18px;
+border-radius:18px;
+border:2px solid #e5e5e5;
+background:#fff;
+text-align:center;
+font-weight:800;
+cursor:pointer;
+transition:.3s;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:8px;
+}
+
+/* ✅ FIX: Payment logos - use SVG inline instead of broken external URLs */
+.lm-method .pay-logo{
+width:48px;
+height:48px;
+object-fit:contain;
+display:block;
+}
+
+.lm-method.active{
+border-color:#0057A8;
+background:#eef5ff;
+color:#0057A8;
+}
+
+.cash-box{
+display:none;
+background:#f8f9fc;
+padding:18px;
+border-radius:18px;
+text-align:center;
+margin-bottom:25px;
+}
+
+.cash-number{
+background:#fff;
+padding:16px;
+border-radius:14px;
+font-size:22px;
+font-weight:800;
+cursor:pointer;
+margin-top:10px;
+}
+
+.lm-total{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+font-size:24px;
+font-weight:800;
+}
+
+.lm-btn{
+width:100%;
+height:64px;
+border:none;
+border-radius:18px;
+background:#E5B86A;
+color:#fff;
+font-size:20px;
+font-weight:800;
+cursor:pointer;
+transition:.2s;
+}
+
+.lm-btn:disabled{
+opacity:0.6;
+cursor:not-allowed;
+}
+
+.whatsapp-float{
+position:fixed;
+bottom:20px;
+left:20px;
+background:#25D366;
+padding:14px 18px;
+border-radius:50px;
+color:#fff;
+text-decoration:none;
+font-weight:800;
+z-index:999;
+}
+
+.popup-overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.5);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:9999;
+}
+
+.popup-box{
+background:#fff;
+padding:28px;
+border-radius:24px;
+width:90%;
+max-width:360px;
+text-align:center;
+}
+
+.popup-box h2{
+font-size:20px;
+line-height:1.8;
+font-weight:700;
+color:#0057A8;
+}
+
+.popup-btn{
+margin-top:18px;
+border:none;
+background:#0057A8;
+color:#fff;
+padding:14px 24px;
+border-radius:14px;
+font-weight:700;
+cursor:pointer;
+}
+
+@media(max-width:991px){
+
+.lm-wrapper{
+grid-template-columns:1fr;
+padding:15px;
+}
+
+.lm-title{
+font-size:30px;
+}
+
+.lm-product-top{
+flex-direction:column;
+text-align:center;
+}
+
+.lm-product-img{
+width:100%;
+height:240px;
+}
+
+.lm-product-name{
+font-size:24px;
+}
+
+.progress-top{
+flex-direction:column;
+gap:8px;
+}
+
+.popup-box h2{
+font-size:17px;
+}
+
+}
+</style>
+
+<div class="lm-wrapper">
+
+<div class="lm-card">
+
+<div class="lm-title">
+🛒 اختر التبرع
+</div>
+
+<div class="lm-product-card">
+
+<div class="lm-product-top">
+
+<img
+class="lm-product-img"
+id="productImage"
+src="https://i.ibb.co/GvtXcPg1/pngtree-young-dairy-cow-calf-with-black-white-spots-standing-png-image-16809789.webp">
+
+<div class="product-info">
+
+<select class="donation-select"
+id="donationType"
+onchange="changeDonation()">
+
+<option value="cow">
+صك بقري بلدي - 15000 جنيه
+</option>
+
+<option value="buffalo">
+صك جاموسي بلدي - 13900 جنيه
+</option>
+
+<option value="meat">
+لحوم صدقات - 400 جنيه / كيلو
+</option>
+
+<option value="meal">
+وجبة إطعام - 100 جنيه
+</option>
+
+<option value="water">
+وصلة مياه - 7500 جنيه
+</option>
+
+</select>
+
+<div class="lm-product-name" id="productName">
+صك بقري بلدي 100%
+</div>
+
+<div class="lm-product-sub" id="productSub">
+فئة التبرع : صك الأضحية
+</div>
+
+</div>
+
+</div>
+
+<div class="lm-qty">
+
+<button class="lm-qty-btn" onclick="decreaseQty()">-</button>
+
+<div class="lm-price">
+EGP <span id="price">15000</span>
+</div>
+
+<button class="lm-qty-btn" onclick="increaseQty()">+</button>
+
+</div>
+
+</div>
+
+<div class="progress-top">
+
+<span id="progressText">
+تم جمع 57% من المستهدف
+</span>
+
+<span id="liveCounter">
+تم حجز 23 صك بقري
+</span>
+
+</div>
+
+<div class="progress-bar">
+<div class="progress-fill" id="progressFill"></div>
+</div>
+
+<div class="trust-box">
+
+<div class="trust-item">
+✅ دفع آمن ومشفر
+</div>
+
+<div class="trust-item">
+🏛️ جمعية موثوقة داخل الشرقية
+</div>
+
+<div class="trust-item">
+📞 سيتم التواصل لتأكيد الحجز
+</div>
+
+</div>
+
+</div>
+
+<div class="lm-card">
+
+<div class="lm-title">
+📋 البيانات والدفع
+</div>
+
+<label class="required">
+الاسم <span>*</span>
+</label>
+
+<input
+class="lm-input"
+type="text"
+id="name"
+placeholder="اكتب الاسم">
+
+<label class="required">
+رقم الهاتف <span>*</span>
+</label>
+
+<input
+class="lm-input"
+type="tel"
+id="phone"
+placeholder="01XXXXXXXXX"
+maxlength="11">
+
+<input
+class="lm-input"
+type="email"
+id="email"
+placeholder="البريد الإلكتروني (اختياري)">
+
+<div class="lm-section-title">
+طرق الدفع
+</div>
+
+<div class="lm-payments">
+
+<!-- ✅ FIX: InstaPay logo as reliable SVG from CDN -->
+<div class="lm-method active" data-method="instapay">
+  <img
+    class="pay-logo"
+    src="https://dl.svgcdn.com/png/arcticons/instapay-400.png"
+    onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+    alt="InstaPay">
+  <span style="display:none;font-size:28px;">💳</span>
+  InstaPay
+</div>
+
+<!-- ✅ FIX: Vodafone logo from Wikipedia SVG rendered as PNG -->
+<div class="lm-method" data-method="vodafone">
+  <img
+    class="pay-logo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Vodafone_icon.svg/480px-Vodafone_icon.svg.png"
+    onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+    alt="Vodafone Cash">
+  <span style="display:none;font-size:28px;">📱</span>
+  Vodafone Cash
+</div>
+
+</div>
+
+<div class="cash-box" id="cashBox">
+
+<div style="font-size:15px;color:#666;margin-bottom:8px;">
+📱 اضغط على الكود لنسخه تلقائياً
+</div>
+
+<div class="cash-number" onclick="copyNumber()" style="cursor:pointer;border:2px dashed #e74c3c;color:#e74c3c;position:relative;"><span id="vodafoneCode">*9*7*01556635306*15000#</span></div>
+
+<div id="copyMsg" style="display:none;margin-top:10px;color:#1A6B3C;font-weight:700;font-size:15px;">
+✅ تم نسخ الكود — افتح فودافون كاش والصقه
+</div>
+
+</div>
+
+<div class="lm-total">
+
+<span>
+إجمالي التبرع
+</span>
+
+<span>
+EGP <span id="total">15000</span>
+</span>
+
+</div>
+
+<button class="lm-btn" id="submitBtn" onclick="sendData()">
+تأكيد واستكمال الدفع
+</button>
+
+</div>
+
+</div>
+
+<a
+class="whatsapp-float"
+href="https://wa.me/201022179334"
+target="_blank">
+واتساب للاستفسارات
+</a>
+
+<div class="popup-overlay" id="successPopup">
+
+<div class="popup-box">
+
+<h2>
+تبرعك في أمان وبيفرق في حياة إنسان 🤍
+</h2>
+
+<button class="popup-btn" onclick="closePopup()">
+حسنًا
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+let qty = 1;
+let itemPrice = 15000;
+
+// ✅ FIX: Run after DOM is ready
+changeDonation();
+setupPaymentMethods();
+
+function updatePrice(){
+  const amount = qty * itemPrice;
+  document.getElementById("price").innerText = amount.toLocaleString('en-EG');
+  document.getElementById("total").innerText = amount.toLocaleString('en-EG');
+  const code = `*9*7*01556635306*${amount}#`;
+  document.getElementById("vodafoneCode").innerText = code;
+}
+
+function changeDonation(){
+
+  const type = document.getElementById("donationType").value;
+  const productImage = document.getElementById("productImage");
+  const productName = document.getElementById("productName");
+  const productSub = document.getElementById("productSub");
+  const progressText = document.getElementById("progressText");
+  const counterText = document.getElementById("liveCounter");
+  const progressFill = document.getElementById("progressFill");
+
+  if(type === "cow"){
+    itemPrice = 15000;
+    productName.innerText = "صك بقري بلدي 100%";
+    productSub.innerText = "فئة التبرع : صك الأضحية";
+    productImage.src = "https://i.ibb.co/GvtXcPg1/pngtree-young-dairy-cow-calf-with-black-white-spots-standing-png-image-16809789.webp";
+    progressText.innerText = "تم جمع 57% من المستهدف";
+    counterText.innerText = "تم حجز 23 صك بقري";
+    progressFill.style.width = "57%";
+  }
+
+  if(type === "buffalo"){
+    itemPrice = 13900;
+    productName.innerText = "صك جاموسي بلدي";
+    productSub.innerText = "فئة التبرع : صك الأضحية";
+    productImage.src = "https://i.ibb.co/ynhjBRmJ/images.jpg";
+    progressText.innerText = "تم جمع 36% من المستهدف";
+    counterText.innerText = "تم حجز 7 صكوك جاموسي";
+    progressFill.style.width = "36%";
+  }
+
+  if(type === "meat"){
+    itemPrice = 400;
+    productName.innerText = "لحوم صدقات";
+    productSub.innerText = "سعر الكيلو : 400 جنيه";
+    productImage.src = "https://images.unsplash.com/photo-1603048297172-c92544798d5a?q=80&w=1200&auto=format&fit=crop";
+    progressText.innerText = "تم جمع 49% من المستهدف";
+    counterText.innerText = "تم حجز 1080 كيلو لحوم";
+    progressFill.style.width = "49%";
+  }
+
+  if(type === "meal"){
+    itemPrice = 100;
+    productName.innerText = "وجبة إطعام";
+    productSub.innerText = "سعر الوجبة : 100 جنيه";
+    productImage.src = "https://i.ibb.co/Xfkwd4CS/grilled-chicken-meal637813057922220209.jpg";
+    progressText.innerText = "تم جمع 54% من المستهدف";
+    counterText.innerText = "تم حجز 765 وجبة إطعام";
+    progressFill.style.width = "54%";
+  }
+
+  if(type === "water"){
+    itemPrice = 7500;
+    productName.innerText = "وصلة مياه";
+    productSub.innerText = "مساهمة في توصيل المياه للأسر";
+    productImage.src = "https://images.unsplash.com/photo-1521207418485-99c705420785?q=80&w=1200&auto=format&fit=crop";
+    progressText.innerText = "تم جمع 81% من المستهدف";
+    counterText.innerText = "تم حجز 11 وصلة مياه";
+    progressFill.style.width = "81%";
+  }
+
+  qty = 1;
+  updatePrice();
+}
+
+function increaseQty(){
+  qty++;
+  updatePrice();
+}
+
+function decreaseQty(){
+  if(qty > 1){
+    qty--;
+    updatePrice();
+  }
+}
+
+// ✅ FIX: Extracted to named function, called after DOM ready
+function setupPaymentMethods(){
+  document.querySelectorAll('.lm-method').forEach(item=>{
+    item.addEventListener('click',()=>{
+      document.querySelectorAll('.lm-method').forEach(el=>{
+        el.classList.remove('active');
+      });
+      item.classList.add('active');
+      const method = item.dataset.method;
+      document.getElementById("cashBox").style.display =
+        method === "vodafone" ? "block" : "none";
+    });
+  });
+}
+
+function copyNumber(){
+  const code = document.getElementById("vodafoneCode").innerText;
+  
+  // execCommand يشتغل في كل البيئات حتى iframes
+  const el = document.createElement("textarea");
+  el.value = code;
+  el.style.position = "fixed";
+  el.style.opacity = "0";
+  document.body.appendChild(el);
+  el.focus();
+  el.select();
+  
+  try {
+    document.execCommand("copy");
+    document.getElementById("copyMsg").style.display = "block";
+    setTimeout(()=>{
+      document.getElementById("copyMsg").style.display = "none";
+    }, 3000);
+  } catch(e) {
+    // لو فشل كل حاجة — وريله الكود يكوبيه يدوي
+    alert("انسخ الكود ده يدوياً:\n" + code);
+  }
+  
+  document.body.removeChild(el);
+}
+
+// ✅ FIX: Phone validation + button loading state
+function sendData(){
+
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const donation = document.getElementById("productName").innerText;
+  const amount = qty * itemPrice;
+
+  // Reset errors
+  document.getElementById("name").classList.remove("error");
+  document.getElementById("phone").classList.remove("error");
+
+  if(name === ""){
+    document.getElementById("name").classList.add("error");
+    alert("من فضلك اكتب الاسم");
+    return;
+  }
+
+  // ✅ FIX: Egyptian phone number validation
+  const phoneRegex = /^(010|011|012|015)\d{8}$/;
+  if(!phoneRegex.test(phone)){
+    document.getElementById("phone").classList.add("error");
+    alert("من فضلك اكتب رقم هاتف مصري صحيح (مثال: 01012345678)");
+    return;
+  }
+
+  // ✅ FIX: Disable button during submit to prevent double clicks
+  const btn = document.getElementById("submitBtn");
+  btn.disabled = true;
+  btn.innerText = "جاري الإرسال...";
+
+  fetch("https://script.google.com/macros/s/AKfycbzlZm0W6HVAcaWhzYFUXAdwse9sfS4rTxDYCH-tiwe1N5k21VdkZfjo3PsRmgD0fGnqLg/exec",{
+    method:"POST",
+    mode:"no-cors",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({ name, phone, email, donation, amount })
+  })
+  .then(()=>{
+
+    document.getElementById("successPopup").style.display = "flex";
+
+    const selectedMethod =
+      document.querySelector(".lm-method.active").dataset.method;
+
+    if(selectedMethod === "instapay"){
+      setTimeout(()=>{
+        window.location.href = `https://ipn.eg/S/ahmed.elsaeed26/instapay/9fC1v1`;
+      }, 700);
+    }
+
+  })
+  .catch(()=>{
+    alert("حدث خطأ أثناء حفظ البيانات، حاول مرة أخرى");
+    btn.disabled = false;
+    btn.innerText = "تأكيد واستكمال الدفع";
+  });
+
+}
+
+function closePopup(){
+  document.getElementById("successPopup").style.display = "none";
+}
+
+</script>
+``
+<div class="lm-footer">
+© Developed and designed by: Ahmed ElSaeed
+</div>
